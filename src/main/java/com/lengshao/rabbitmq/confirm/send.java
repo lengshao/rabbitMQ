@@ -51,7 +51,7 @@ public class send {
             long nextPublishSeqNo = channel.getNextPublishSeqNo();
             AMQP.BasicProperties properties = new AMQP.BasicProperties.Builder()
                     .deliveryMode(2).build();
-            channel.basicPublish(EXCHANGE_NAME,"confirm_synic",properties,(msg+"_"+nextPublishSeqNo).getBytes());
+            channel.basicPublish(EXCHANGE_NAME,"confirm.synic",properties,(msg+"_"+nextPublishSeqNo).getBytes());
             Thread.sleep(nextPublishSeqNo*300);
             System.out.println("send msg :"+msg+"_"+nextPublishSeqNo);
 //            if(nextPublishSeqNo%2==0){

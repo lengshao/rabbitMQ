@@ -23,7 +23,7 @@ public class Recv {
         arg.put("x-dead-letter-exchange",EXCHANGE_NAME_DLX);
         arg.put("x-dead-letter-routing-key","routingkey");
         channel.queueDeclare(QUEUE_NAME, true, false, false, arg);
-        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "confirm_synic");
+        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "confirm.*");
         channel.basicQos(5);
         channel.basicConsume(QUEUE_NAME, false, new DefaultConsumer(channel) {
             @Override
